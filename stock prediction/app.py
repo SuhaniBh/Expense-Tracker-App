@@ -11,7 +11,7 @@ st.header('Stock Market Predictor')
 
 stock =st.text_input('Enter Stock Symnbol', 'GOOG')
 start = '2015-01-01'
-end = '2025-03-01'
+end = '2025-04-01'
 
 data = yf.download(stock, start ,end)
 
