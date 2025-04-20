@@ -1,10 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 import avatar from '../../img/avatar.png'
 import { signout } from '../../utils/Icons'
 import { menuItems } from '../../utils/menuItems'
 
 function Navigation({active, setActive}) {
+    const navigate = useNavigate();
+    
+    const handleSignOut = () => {
+        // Remove authentication flag from session storage
+        sessionStorage.removeItem('isAuthenticated');
+        // Redirect to login page
+        navigate('/');
+    }
     
     return (
         <NavStyled>
@@ -28,9 +37,9 @@ function Navigation({active, setActive}) {
                 })}
             </ul>
             <div className="bottom-nav">
-                <li>
+                <button className="signout-btn" onClick={handleSignOut}>
                     {signout} Sign Out
-                </li>
+                </button>
             </div>
         </NavStyled>
     )
@@ -108,6 +117,28 @@ const NavStyled = styled.nav`
             height: 100%;
             background: #222260;
             border-radius: 0 10px 10px 0;
+        }
+    }
+    
+    .bottom-nav{
+        .signout-btn{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: rgba(34, 34, 96, .6);
+            transition: all .4s ease-in-out;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            
+            &:hover {
+                color: rgba(34, 34, 96, 1);
+                background: rgba(252, 246, 249, 0.9);
+            }
         }
     }
 `;
