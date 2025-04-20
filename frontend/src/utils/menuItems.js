@@ -9,9 +9,9 @@ export const menuItems = [
     },
     {
         id: 2,
-        title: "View Transactions",
+        title: "Loan Assessment",
         icon: transactions,
-        link: "/dashboard",
+        link: "/credit",
     },
     {
         id: 3,
